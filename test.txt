@@ -1,0 +1,31 @@
+1: je read et je fais un malloc sur temp de taille BUFFER_SIZE + strlen de stat_str
+2: si stat_str existe le mettre au debut de temp
+3: je read dans mon temp[strlen (stat_str)]
+4: je NULL stat_str
+5: je cherche mon \n dans temp
+- si fin de ficher
+		return (temp)
+- Si \n pas dedans
+		rappeler return un strjoin de temp et le retour de la fonc 
+- Si \n dedans
+		stat_str = &\n + 1 de temp
+		je return ce qu il y a avant
+
+
+check si stat existe
+	si oui 
+		je le met au debut de line et m arrete au \n ou \0
+		et je le null
+i = read, dans un autres char *
+je regarde le retoure du read
+si i = -1
+	return (NULL)
+si  i > 0
+	je regarde si y a \n ou End Of Files (EOF)
+		si oui
+			je le met avec line 
+			je remplis stat_str (sauf si !(line == \0))
+			et return line
+		si non 
+			je join avec line
+			je re read

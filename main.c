@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:59:28 by amiguez           #+#    #+#             */
-/*   Updated: 2021/11/24 22:22:17 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/01 11:03:57 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,9 @@ int	main(void)
 	int		fd;
 	char	*str;
 
-	printf("------------\n");
+	printf("------debug------\n");
 	fd = open("/Users/amiguez/Desktop/get_next_line/test.txt", O_RDONLY);
 	str = get_next_line(fd);
-	printf("1%s\n", str);
-	str = get_next_line(fd);
-	printf("2%s\n", str);
-		str = get_next_line(fd);
-	printf("3%s\n", str);
+	printf("------result------\n");
+	printf("1 = '%s'\n", str);
 }
