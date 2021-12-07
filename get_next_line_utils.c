@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:44 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/07 15:45:34 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 16:26:24 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,12 @@ char	*ft_strjoin(char *line, char *temp)
 	return (s_ret);
 }
 
-char	*fr_nl(char *ln)
+char	*ret_nl(char *ln, int i)
 {
-	free (ln);
-	return (NULL);
+	if (i == -1)
+	{
+		free (ln);
+		return (NULL);
+	}
+	return (ln);
 }

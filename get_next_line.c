@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 10:39:20 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/07 15:43:06 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 16:23:38 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ char	*get_next_line(int fd)
 	{
 		i = read(fd, temp, BUFFER_SIZE);
 		if (i <= 0)
-			return (line);
+			return (ret_nl(line, i));
 		temp[i] = '\0';
 		line = ft_strjoin(line, temp);
 	}
