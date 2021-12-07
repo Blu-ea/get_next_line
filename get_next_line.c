@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 10:39:20 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/07 15:24:53 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 15:43:06 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*get_next_line(int fd)
 	int			i;
 
 	line = 0;
-	i = 1;
+	i = BUFFER_SIZE;
 	if (fd < 0 || BUFFER_SIZE == 0)
 		return (NULL);
 	if (*stat)
@@ -28,11 +28,11 @@ char	*get_next_line(int fd)
 		line = ft_strdup(stat);
 		*stat = 0;
 	}
-	while (chek_nl(line) == -1 && i != 0)
+	while (chek_nl(line) == -1 && i == BUFFER_SIZE)
 	{
 		i = read(fd, temp, BUFFER_SIZE);
 		if (i <= 0)
-			return (fr_nl(line));
+			return (line);
 		temp[i] = '\0';
 		line = ft_strjoin(line, temp);
 	}

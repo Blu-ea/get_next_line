@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/02 18:08:44 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/03 20:19:22 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 15:45:34 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ char	*ft_strdup(const char *src)
 	return (ret);
 }
 
-char	*ft_strjoin(char const *line, char const *temp)
+char	*ft_strjoin(char *line, char *temp)
 {
 	char	*s_ret;
 	int		i;
@@ -65,6 +65,7 @@ char	*ft_strjoin(char const *line, char const *temp)
 		j++;
 	}
 	s_ret[j] = '\0';
+	free(line);
 	return (s_ret);
 }
 

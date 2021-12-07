@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:06:38 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/03 20:04:18 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 15:45:55 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	*get_next_line(int fd);
 int		chek_nl(char *line);
 int		ft_strlen(const char *str);
 char	*ft_strdup(const char *src);
-char	*ft_strjoin(char const *line, char const *temp);
+char	*ft_strjoin(char *line, char *temp);
 char	*fr_nl(char *ln);
 void	set_nl(char *line, char stat[BUFFER_SIZE + 1]);
 #endif
