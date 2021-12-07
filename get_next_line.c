@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 10:39:20 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/02 21:12:36 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/07 15:24:53 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,49 +15,61 @@
 char	*get_next_line(int fd)
 {
 	char		*line;
-	char static	stat[BUFFER_SIZE];
+	char static	stat[BUFFER_SIZE + 1];
+	char		temp[BUFFER_SIZE + 1];
 	int			i;
 
-	line = malloc (sizeof(char) * (ft_strlen(stat) + 1));
-	if (!line)
-		return (0);
-	if (1 == fill_line(line, &stat))
-		return (line);
-	i = read(fd, stat, BUFFER_SIZE);
-	if (i <= 0)
-		return (fr_nl(line));
-	if (i < BUFFER_SIZE)
-		return(i_m_buff(&line, &stat));
+	line = 0;
+	i = 1;
+	if (fd < 0 || BUFFER_SIZE == 0)
+		return (NULL);
+	if (*stat)
+	{
+		line = ft_strdup(stat);
+		*stat = 0;
+	}
+	while (chek_nl(line) == -1 && i != 0)
+	{
+		i = read(fd, temp, BUFFER_SIZE);
+		if (i <= 0)
+			return (fr_nl(line));
+		temp[i] = '\0';
+		line = ft_strjoin(line, temp);
+	}
+	if (chek_nl(line) != -1)
+		set_nl(line, (char *)stat);
+	return (line);
 }
 
-char	*i_m_buff(char **line, char **stat)
-{
-
-}
-
-int	fill_line(char *line, char **stat)
+int	chek_nl(char *line)
 {
 	int	i;
-	int	j;
 
-	while (!*stat[i] && *stat[i] != '\n')
+	i = 0;
+	if (!line)
+		return (-1);
+	while (line[i])
 	{
-		line[i] = stat[i];
+		if (line[i] == '\n')
+			return (i);
 		i++;
 	}
-	if (*stat[i])
+	return (-1);
+}
+
+void	set_nl(char *line, char *stat)
+{
+	char	*temp;
+	int		i;
+
+	i = 0;
+	temp = ft_strdup(&line[chek_nl(line) + 1]);
+	line[chek_nl(line) + 1] = '\0';
+	while (temp[i])
 	{
-		line[i] = "\n\0";
-		while (*stat[i])
-		{
-			*stat[j] = *stat[i];
-			i++;
-			j++;
-		}
-		*stat[i] = 0;
-		return (1);
+		stat[i] = temp[i];
+		i++;
 	}
-	*stat = 0;
-	line[i] = '\0';
-	return (0);
+	stat[i] = 0;
+	free (temp);
 }

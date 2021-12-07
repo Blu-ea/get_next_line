@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/22 18:06:38 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/02 20:06:57 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/03 20:04:18 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,17 @@
 
 # include <unistd.h> //read
 # include <stdlib.h> //malloc
+# include <stdio.h> //printf
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 0
 # endif
 
 char	*get_next_line(int fd);
-int		ft_strlen(char *str);
-int		fr_nl(char *line);
-int		fill_line(char *line, char **stat);
-
+int		chek_nl(char *line);
+int		ft_strlen(const char *str);
+char	*ft_strdup(const char *src);
+char	*ft_strjoin(char const *line, char const *temp);
+char	*fr_nl(char *ln);
+void	set_nl(char *line, char stat[BUFFER_SIZE + 1]);
 #endif

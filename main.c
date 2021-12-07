@@ -6,7 +6,7 @@
 /*   By: amiguez <amiguez@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 13:59:28 by amiguez           #+#    #+#             */
-/*   Updated: 2021/12/01 11:03:57 by amiguez          ###   ########.fr       */
+/*   Updated: 2021/12/03 18:51:15 by amiguez          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,17 @@ int	main(void)
 {
 	int		fd;
 	char	*str;
+	int		i;
 
-	printf("------debug------\n");
+	i = 5;
 	fd = open("/Users/amiguez/Desktop/get_next_line/test.txt", O_RDONLY);
-	str = get_next_line(fd);
-	printf("------result------\n");
-	printf("1 = '%s'\n", str);
+	while (i)
+	{
+		printf("------debug-------\n");
+		str = get_next_line(3);
+		printf("------result------\n");
+		printf("\n%d = '%s'\n", 6 - i, str);
+		free(str);
+		i--;
+	}
 }
